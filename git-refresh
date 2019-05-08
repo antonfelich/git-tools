@@ -1,0 +1,15 @@
+# This script is handy if you have just completed a feature. It will switch you 
+# back to the latest version of master and then prune any old branches. 
+
+inside_git_repo="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
+
+if [ ! "$inside_git_repo" ]; then
+  echo "You aren't in a git repository"
+  exit 0
+fi;
+
+git stash 
+git checkout master
+git remote prune origin
+git pull 
+git stash pop
