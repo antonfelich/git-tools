@@ -1,0 +1,7 @@
+#git branch -r: lists remote branches
+#awk '{print $1}': prettify the output of previous command
+#egrep -v -f /dev/fd/0 <(git branch -vv | grep origin): print a difference between remote and local branches
+#awk '{print $1}': prettify the previous
+#xargs git branch -D: removes local branches found at point 3
+
+git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D

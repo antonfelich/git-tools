@@ -11,5 +11,6 @@ fi;
 git stash 
 git checkout master
 git remote prune origin
+git fetch --prune
 git pull 
 git stash pop
